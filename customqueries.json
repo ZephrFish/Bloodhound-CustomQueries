@@ -38,7 +38,39 @@
                         "category": "Azure",
                         "queryList": [{
                             "final": true,
-                            "query": "MATCH p=(m:AZUser)-[r:MemberOf]->(n) WHERE NOT m.objectid CONTAINS 'S-1-5' RETURN p"
+                            "query": "MATCH p=(m:AZUser)-[r:AZMemberOf]->(n) WHERE NOT m.objectid CONTAINS 'S-1-5' RETURN p"
+                        }]
+                    },
+					{
+                        "name": "Return GUEST Azure Users and their Groups",
+                        "category": "Azure",
+                        "queryList": [{
+                            "final": true,
+                            "query": "MATCH p=(m:AZUser)-[r:AZMemberOf]->(n) WHERE NOT m.objectid CONTAINS 'S-1-5' AND m.userprincipalname=~ '(?i).*#EXT#.*' RETURN p"
+                        }]
+                    },
+					{
+                        "name": "Return All Azure Users and their Roles",
+                        "category": "Azure",
+                        "queryList": [{
+                            "final": true,
+                            "query": "MATCH p=(m)-[r:AZHasRole]->(n) WHERE NOT m.objectid CONTAINS 'S-1-5' RETURN p"
+                        }]
+                    },
+					{
+                        "name": "Return All Azure Users and their owned Devices",
+                        "category": "Azure",
+                        "queryList": [{
+                            "final": true,
+                            "query": "MATCH p=(d:AZDevice)<-[r1:AZOwns]->(m:AZUser) RETURN p"
+                        }]
+                    },
+					{
+                        "name": "Return All Azure ADMINS and their owned Devices",
+                        "category": "Azure",
+                        "queryList": [{
+                            "final": true,
+                            "query": "MATCH p=(d:AZDevice)<-[r1:AZOwns]->(m:AZUser)<-[r2:AZHasRole]->(n) RETURN p"
                         }]
                     },
                     {
