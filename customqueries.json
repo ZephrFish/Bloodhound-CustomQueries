@@ -50,11 +50,11 @@
                         }]
                     },
 					{
-                        "name": "Return All Azure Users and their Roles",
+                        "name": "Return All Azure Users and their Admin Roles",
                         "category": "Azure",
                         "queryList": [{
                             "final": true,
-                            "query": "MATCH p=(m)-[r:AZHasRole]->(n) WHERE NOT m.objectid CONTAINS 'S-1-5' RETURN p"
+                            "query": "MATCH p=(n)-[:AZHasRole|AZMemberOf*1..2]->(:AZRole) RETURN p"
                         }]
                     },
 					{
