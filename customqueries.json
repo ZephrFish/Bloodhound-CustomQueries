@@ -284,7 +284,7 @@
                         }]
                     },
                     {
-                        "name": "Find users created in the last 30 days,
+                        "name": "Find users created in the last 30 days",
                         "category": "User Information",
                         "queryList": [{
                             "final": true,
