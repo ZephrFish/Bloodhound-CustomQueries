@@ -34,11 +34,43 @@
                         }]
                     },
                     {
-                        "name": "Return All Azure Users and their Groups",
+                        "name": "Return All Azure Users and their Groups (Warning: Heavy)",
                         "category": "Azure",
                         "queryList": [{
                             "final": true,
-                            "query": "MATCH p=(m:AZUser)-[r:MemberOf]->(n) WHERE NOT m.objectid CONTAINS 'S-1-5' RETURN p"
+                            "query": "MATCH p=(m:AZUser)-[r:AZMemberOf*1..]->(n) WHERE NOT m.objectid CONTAINS 'S-1-5' RETURN p"
+                        }]
+                    },
+		    {
+                        "name": "Return GUEST Azure Users and their Groups",
+                        "category": "Azure",
+                        "queryList": [{
+                            "final": true,
+                            "query": "MATCH p=(m:AZUser)-[r:AZMemberOf*1..]->(n) WHERE NOT m.objectid CONTAINS 'S-1-5' AND m.userprincipalname=~ '(?i).*#EXT#.*' RETURN p"
+                        }]
+                    },
+		    {
+                        "name": "Return All Azure Users and their Admin Roles",
+                        "category": "Azure",
+                        "queryList": [{
+                            "final": true,
+                            "query": "MATCH p=(n)-[:AZHasRole|AZMemberOf*1..]->(:AZRole) RETURN p"
+                        }]
+                    },
+		    {
+                        "name": "Return All Azure Users and their owned Devices (Warning: Heavy)",
+                        "category": "Azure",
+                        "queryList": [{
+                            "final": true,
+                            "query": "MATCH p=(d:AZDevice)<-[r1:AZOwns]->(m:AZUser) RETURN p"
+                        }]
+                    },
+		    {
+                        "name": "Return All Azure Admins and their owned Devices",
+                        "category": "Azure",
+                        "queryList": [{
+                            "final": true,
+                            "query": "MATCH p=(d:AZDevice)<-[r1:AZOwns]->(m:AZUser)<-[r2:AZHasRole]->(n) RETURN p"
                         }]
                     },
                     {
@@ -873,6 +905,14 @@
                                     "query": "MATCH p=(m:User)-[r:AdminTo]->(n:Computer) RETURN p"
                                 }]
                             },
+			    {
+                                "name": "Find all users that have local admin rights or Groups (Warning Can Be Heavy)",
+                                "category": "Admin Hunter",
+                                "queryList": [{
+                                    "final": true,
+                                    "query": "MATCH p=(m:User)-[r:AdminTo|MemberOf*1..]->(n:Computer) RETURN p"
+                                }]
+                            },
                             {
                                 "name": "Find all active Domain Admin sessions",
                                 "category": "Admin Hunter",
@@ -1007,6 +1047,14 @@
                                 "queryList": [{
                                     "final": true,
                                     "query": "MATCH (c:Computer) WHERE c.allowedtodelegate IS NOT NULL RETURN c"
+                                }]
+                            },
+			    {
+                                "name": "Find Users/Groups with direct access to GPOs",
+                                "category": "GPO/Group Information",
+                                "queryList": [{
+                                    "final": true,
+                                    "query": "MATCH p = (n)-[r:AddMember|AddSelf|WriteSPN|AddKeyCredentialLink|AllExtendedRights|ForceChangePassword|GenericAll|GenericWrite|WriteDacl|WriteOwner|Owns]->(g:GPO) RETURN p"
                                 }]
                             },
                             {
@@ -1306,6 +1354,17 @@
                                     {
                                         "final": true,
                                         "query": "MATCH (n:User) WHERE n.lastlogontimestamp=-1.0 AND n.enabled=TRUE RETURN n "
+                                    }
+                                ]
+                            },
+							
+			    {
+                                "name": "Find users that haven't logged on in 720 days and account is still active",
+                                "category": "Password Last Set",
+                                "queryList": [
+                                    {
+                                        "final": true,
+                                        "query": "MATCH (n:User) WHERE n.lastlogontimestamp < (datetime().epochseconds - (720 * 86400)) AND n.enabled=TRUE RETURN n "
                                     }
                                 ]
                             },
