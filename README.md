@@ -8,5 +8,6 @@ Simply add the customqueries.json file to `C:\Users\<INSERT USER>\AppData\Roamin
 
 ## Thanks
 - [Azure Queries](https://github.com/hausec/Bloodhound-Custom-Queries) - [Ryan Hausknecht](https://twitter.com/Haus3c)
+ - Additional Azure Queries - [Matt Powell](https://github.com/mpowelltech)
 - [Certipy](https://github.com/ly4k/Certipy) Certificate Queries - [Oliver Lyak](https://twitter.com/ly4k_)
 - [OS Version Queries + LAPS](https://github.com/myexploit/bloodhound-custom-queries) - [MyExploit2600](https://twitter.com/myexploit2600), Updated queries also merged in (https://twitter.com/myexploit2600/status/1529547082494881792)
