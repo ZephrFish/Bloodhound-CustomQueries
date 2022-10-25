@@ -38,7 +38,7 @@
                         "category": "Azure",
                         "queryList": [{
                             "final": true,
-                            "query": "MATCH p=(m:AZUser)-[r:AZMemberOf]->(n) WHERE NOT m.objectid CONTAINS 'S-1-5' RETURN p"
+                            "query": "MATCH p=(m:AZUser)-[r:AZMemberOf*1..]->(n) WHERE NOT m.objectid CONTAINS 'S-1-5' RETURN p"
                         }]
                     },
 		    {
@@ -46,7 +46,7 @@
                         "category": "Azure",
                         "queryList": [{
                             "final": true,
-                            "query": "MATCH p=(m:AZUser)-[r:AZMemberOf]->(n) WHERE NOT m.objectid CONTAINS 'S-1-5' AND m.userprincipalname=~ '(?i).*#EXT#.*' RETURN p"
+                            "query": "MATCH p=(m:AZUser)-[r:AZMemberOf*1..]->(n) WHERE NOT m.objectid CONTAINS 'S-1-5' AND m.userprincipalname=~ '(?i).*#EXT#.*' RETURN p"
                         }]
                     },
 		    {
@@ -54,7 +54,7 @@
                         "category": "Azure",
                         "queryList": [{
                             "final": true,
-                            "query": "MATCH p=(n)-[:AZHasRole|AZMemberOf*1..2]->(:AZRole) RETURN p"
+                            "query": "MATCH p=(n)-[:AZHasRole|AZMemberOf*1..]->(:AZRole) RETURN p"
                         }]
                     },
 		    {
