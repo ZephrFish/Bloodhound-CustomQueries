@@ -34,7 +34,7 @@
                         }]
                     },
                     {
-                        "name": "Return All Azure Users and their Groups",
+                        "name": "Return All Azure Users and their Groups (Warning: Heavy)",
                         "category": "Azure",
                         "queryList": [{
                             "final": true,
@@ -58,7 +58,7 @@
                         }]
                     },
 		    {
-                        "name": "Return All Azure Users and their owned Devices",
+                        "name": "Return All Azure Users and their owned Devices (Warning: Heavy)",
                         "category": "Azure",
                         "queryList": [{
                             "final": true,
