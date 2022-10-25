@@ -888,7 +888,7 @@
                                     "query": "MATCH p=(m:User)-[r:AdminTo]->(n:Computer) RETURN p"
                                 }]
                             },
-							{
+			    {
                                 "name": "Find all users that have local admin rights or Groups (Warning Can Be Heavy)",
                                 "category": "Admin Hunter",
                                 "queryList": [{
@@ -1341,7 +1341,7 @@
                                 ]
                             },
 							
-							{
+			    {
                                 "name": "Find users that haven't logged on in 720 days and account is still active",
                                 "category": "Password Last Set",
                                 "queryList": [
