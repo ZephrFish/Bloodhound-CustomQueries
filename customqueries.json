@@ -1032,6 +1032,14 @@
                                     "query": "MATCH (c:Computer) WHERE c.allowedtodelegate IS NOT NULL RETURN c"
                                 }]
                             },
+			    {
+                                "name": "Find Users/Groups with direct access to GPOs",
+                                "category": "GPO/Group Information",
+                                "queryList": [{
+                                    "final": true,
+                                    "query": "MATCH p = (n)-[r:AddMember|AddSelf|WriteSPN|AddKeyCredentialLink|AllExtendedRights|ForceChangePassword|GenericAll|GenericWrite|WriteDacl|WriteOwner|Owns]->(g:GPO) RETURN p"
+                                }]
+                            },
                             {
                                 "name": "Find if any domain user has interesting permissions against a GPO (Warning: Heavy)",
                                 "category": "GPO/Group Information",
