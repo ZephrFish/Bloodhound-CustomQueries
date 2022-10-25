@@ -308,6 +308,23 @@
                         }]
                     },
                     {
+                        "name": "Find users with Temp in user title and created in the last 30 days",
+                        "category": "User Information",
+                        "queryList": [{
+                            "final": true,
+                            "query": "MATCH (u:User) where u.enabled=TRUE and u.whencreated  > (datetime().epochseconds - (30 * 86400)) AND u.title CONTAINS 'Temp' RETURN u"
+                        }]
+                    },
+                    {
+                        "name": "Find users created in the last 30 days",
+                        "category": "User Information",
+                        "queryList": [{
+                            "final": true,
+                            "query": "MATCH (u:User) where u.enabled=TRUE and u.whencreated  > (datetime().epochseconds - (30 * 86400)) RETURN u"
+                        }]
+                    },
+                        
+                    {
                         "name": "Find users' credentials in description fields",
                         "category": "User Information",
                         "queryList": [{
