@@ -41,7 +41,7 @@
                             "query": "MATCH p=(m:AZUser)-[r:AZMemberOf]->(n) WHERE NOT m.objectid CONTAINS 'S-1-5' RETURN p"
                         }]
                     },
-					{
+		    {
                         "name": "Return GUEST Azure Users and their Groups",
                         "category": "Azure",
                         "queryList": [{
@@ -49,7 +49,7 @@
                             "query": "MATCH p=(m:AZUser)-[r:AZMemberOf]->(n) WHERE NOT m.objectid CONTAINS 'S-1-5' AND m.userprincipalname=~ '(?i).*#EXT#.*' RETURN p"
                         }]
                     },
-					{
+		    {
                         "name": "Return All Azure Users and their Admin Roles",
                         "category": "Azure",
                         "queryList": [{
@@ -57,7 +57,7 @@
                             "query": "MATCH p=(n)-[:AZHasRole|AZMemberOf*1..2]->(:AZRole) RETURN p"
                         }]
                     },
-					{
+		    {
                         "name": "Return All Azure Users and their owned Devices",
                         "category": "Azure",
                         "queryList": [{
@@ -65,8 +65,8 @@
                             "query": "MATCH p=(d:AZDevice)<-[r1:AZOwns]->(m:AZUser) RETURN p"
                         }]
                     },
-					{
-                        "name": "Return All Azure ADMINS and their owned Devices",
+		    {
+                        "name": "Return All Azure Admins and their owned Devices",
                         "category": "Azure",
                         "queryList": [{
                             "final": true,
