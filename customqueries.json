@@ -1006,7 +1006,7 @@
                                 "category": "Domain Escalation",
                                 "queryList": [{
                                     "final": true,
-                                    "query": "MATCH (u:User) WHERE n.hasspn=true AND WHERE u.pwdlastset < (datetime().epochseconds - (1825 * 86400)) and NOT u.pwdlastset IN [-1.0, 0.0] RETURN u"
+                                    "query": "MATCH (u:User) WHERE u.hasspn=true AND u.pwdlastset < (datetime().epochseconds - (1825 * 86400)) and NOT u.pwdlastset IN [-1.0, 0.0] RETURN u"
                                 }]
                             },
                             {
