@@ -333,11 +333,11 @@
                         }]
                     },
                     {
-                        "name": "Find Server 2000",
+                        "name": "Find Server 2000 and Enabled",
                         "category": "OS Finder",
                         "queryList": [{
                             "final": true,
-                            "query": "MATCH (H:Computer) WHERE H.operatingsystem =~ '(?i).*(2000).*' RETURN H"
+                            "query": "MATCH (H:Computer) WHERE H.operatingsystem =~ '(?i).*(2000).*' AND H.enabled = TRUE RETURN H"
                         }]
                     },
         
@@ -351,11 +351,11 @@
                     },
         
                     {
-                        "name": "Find Server 2003",
+                        "name": "Find Server 2003 and Enabled",
                         "category": "OS Finder",
                         "queryList": [{
                             "final": true,
-                            "query": "MATCH (H:Computer) WHERE H.operatingsystem =~ '(?i).*(2003).*' RETURN H"
+                            "query": "MATCH (H:Computer) WHERE H.operatingsystem =~ '(?i).*(2003).*' AND H.enabled = TRUE RETURN H"
                         }]
                     },
                     {
@@ -377,11 +377,11 @@
                     },
         
                     {
-                        "name": "Find Server 2008",
+                        "name": "Find Server 2008 and Enabled",
                         "category": "OS Finder",
                         "queryList": [{
                             "final": true,
-                            "query": "MATCH (H:Computer) WHERE H.operatingsystem =~ '(?i).*(2008).*' RETURN H"
+                            "query": "MATCH (H:Computer) WHERE H.operatingsystem =~ '(?i).*(2008).*' AND H.enabled = TRUE RETURN H"
                         }]
                     },
                     {
@@ -934,7 +934,7 @@
                                 "category": "OS Finder",
                                 "queryList": [{
                                     "final": true,
-                                    "query": "MATCH (H:Computer) WHERE H.operatingsystem = '.*(2000|2003|2008|xp|vista|7|me).*' RETURN H"
+                                    "query": "MATCH (H:Computer) WHERE H.operatingsystem = '.*(2000|2003|2008|xp|vista|7|me).*' AND H.enabled = TRUE RETURN H"
                                 }]
                             },
                             {
@@ -1140,6 +1140,14 @@
                                 }]
                             },
                             {
+                                "name": "Find Un-Supported OS and Enabled",
+                                "category": "OS Finder",
+                                "queryList": [{
+                                    "final": true,
+                                    "query": "MATCH (n:Computer) WHERE n.operatingsystem =~ '(?i).*(2000|2003|2008|xp|vista|7|me).*' AND n.enabled = true RETURN n"
+                                }]
+                            },
+                            {
                                 "name": "Find Server 2008 with session",
                                 "category": "OS Finder",
                                 "queryList": [{
@@ -1149,11 +1157,11 @@
                             },
         
                             {
-                                "name": "Find Windows XP",
+                                "name": "Find Windows XP and Enabled",
                                 "category": "OS Finder",
                                 "queryList": [{
                                     "final": true,
-                                    "query": "MATCH (H:Computer) WHERE H.operatingsystem =~ '(?i).*(xp).*' RETURN H"
+                                    "query": "MATCH (H:Computer) WHERE H.operatingsystem =~ '(?i).*(xp).*' AND H.enabled = true RETURN H"
                                 }]
                             },
         
@@ -1167,11 +1175,11 @@
                             },
         
                             {
-                                "name": "Find Windows 7",
+                                "name": "Find Windows 7 and Enabled",
                                 "category": "OS Finder",
                                 "queryList": [{
                                     "final": true,
-                                    "query": "MATCH (H:Computer) WHERE H.operatingsystem =~ '(?i).*(7).*' RETURN H"
+                                    "query": "MATCH (H:Computer) WHERE H.operatingsystem =~ '(?i).*(7).*' AND H.enabled = true RETURN H"
                                 }]
                             },
         
@@ -1186,11 +1194,11 @@
                             },
         
                             {
-                                "name": "Find Server 2012",
+                                "name": "Find Server 2012 and Enabled",
                                 "category": "OS Finder",
                                 "queryList": [{
                                     "final": true,
-                                    "query": "MATCH (H:Computer) WHERE H.operatingsystem =~ '(?i).*(2012).*' RETURN H"
+                                    "query": "MATCH (H:Computer) WHERE H.operatingsystem =~ '(?i).*(2012).*' AND H.enabled = true RETURN H"
                                 }]
                             },
         
@@ -1204,11 +1212,11 @@
                             },
         
                             {
-                                "name": "Find Server 2016",
+                                "name": "Find Server 2016 and Enabled",
                                 "category": "OS Finder",
                                 "queryList": [{
                                     "final": true,
-                                    "query": "MATCH (H:Computer) WHERE H.operatingsystem =~ '(?i).*(2016).*' RETURN H"
+                                    "query": "MATCH (H:Computer) WHERE H.operatingsystem =~ '(?i).*(2016).*' AND H.enabled = true RETURN H"
                                 }]
                             },
         
@@ -1222,11 +1230,11 @@
                             },
         
                             {
-                                "name": "Find Server 2019",
+                                "name": "Find Server 2019 and Enabled",
                                 "category": "OS Finder",
                                 "queryList": [{
                                     "final": true,
-                                    "query": "MATCH (H:Computer) WHERE H.operatingsystem =~ '(?i).*(2019).*' RETURN H"
+                                    "query": "MATCH (H:Computer) WHERE H.operatingsystem =~ '(?i).*(2019).*' AND H.enabled = true RETURN H"
                                 }]
                             },
         
@@ -1237,16 +1245,6 @@
                                     "final": true,
                                     "query": "MATCH (H:Computer)-[:HasSession]->(y) WHERE H.operatingsystem =~ '(?i).*(2019).*' RETURN H"
                                 }]
-                            },
-                            {
-                                "name": "Find Server 2019 with computer enabled",
-                                "category": "OS Finder",
-                                "queryList": [
-                                    {
-                                        "final": true,
-                                        "query": "MATCH (H:Computer) WHERE H.operatingsystem =~ '(?i).*(2019).*' AND H.enabled = true  RETURN H"
-                                    }
-                                ]
                             },
                             {
                                 "name": "All Users with a homedirectory",
@@ -1383,3 +1381,6 @@
 
                 ]
             }
+
+
+
