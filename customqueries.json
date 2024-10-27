@@ -696,7 +696,7 @@
                         "category": "Group Hunts",
                         "queryList": [{
                             "final": true,
-                            "query": "MATCH p=(g:Group)-[r:Owns|:WriteDacl|:GenericAll|:WriteOwner|:ExecuteDCOM|:GenericWrite|:AllowedToDelegate|:ForceChangePassword]->(n:Computer) WHERE NOT g.name CONTAINS 'ADMIN' RETURN p",
+                            "query": "MATCH p=(g:Group)-[r:Owns|WriteDacl|GenericAll|WriteOwner|ExecuteDCOM|GenericWrite|AllowedToDelegate|ForceChangePassword]->(n:Computer)  WHERE NOT g.name CONTAINS 'ADMIN' RETURN p",
                             "allowCollapse": true
                         }]
                     },
