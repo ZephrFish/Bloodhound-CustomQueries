@@ -1247,6 +1247,23 @@
                                 }]
                             },
                             {
+                                "name": "Find Server 2022 and Enabled",
+                                "category": "OS Finder",
+                                "queryList": [{
+                                    "final": true,
+                                    "query": "MATCH (H:Computer) WHERE H.operatingsystem =~ '(?i).*(2022).*' AND H.enabled = true RETURN H"
+                                }]
+                            },
+
+                            {
+                                "name": "Find Server 2022 with session",
+                                "category": "OS Finder",
+                                "queryList": [{
+                                    "final": true,
+                                    "query": "MATCH (H:Computer)-[:HasSession]->(y) WHERE H.operatingsystem =~ '(?i).*(2022).*' RETURN H"
+                                }]
+                            },
+                            {
                                 "name": "All Users with a homedirectory",
                                 "category": "User Information",
                                 "queryList": [
@@ -1377,10 +1394,5 @@
                                     }
                                 ]
                             }
-
-
                 ]
             }
-
-
-
