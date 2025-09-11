@@ -1,7 +1,7 @@
 # Bloodhound-CustomQueries
 Custom Queries - Brought Up to BH4.1 syntax.
 
-A combination of custom cypher queries from various sources for [Bloodhound](https://github.com/BloodHoundAD/BloodHound), added categories to match newest version of BH. Some queries are straight from sources below however others are curated from all over. If you have others to add, just open a pull request and add the thanks to the list.
+A combination of custom cypher queries from various sources for [Bloodhound](https://github.com/SpecterOps/BloodHound-Legacy), added categories to match newest version of BH. Some queries are straight from sources below however others are curated from all over. If you have others to add, just open a pull request and add the thanks to the list.
 
 ## How To
 Copy the customqueries.json into the respective paths on your OS:
